@@ -1,0 +1,58 @@
+<!DOCTYPE utf html>
+<html>
+    <head>
+
+        <script>
+            var variants = ["Rock", "Paper", "Scissors"];
+            function computerPlay() {
+                let choice = Math.floor(Math.random()*variants.length);
+                
+                return choice;
+            }
+            function playRound(playerSelection, computerSelection) {
+                let winner;
+                let results = ["You win! Bad Motherfucker!", "You lose! Bite me, petty human!", "Draw boys! Try again"];
+                // rules of the game
+                let variant;
+                let playerChoice = 0;
+                let computerChoice = computerSelection;
+                for (variant in variants) {
+                    if (variant == playerSelection) {
+                        playerChoice =  variants.indexOf(variant);
+                    }
+                }
+                if (playerChoice == computerChoice) {
+                    winner = results[2];
+                }
+                else if ((computerChoice - playerChoice == 1) || (computerChoice == 0 && playerChoice == 2)) {
+                    winner = results[1];
+                }
+                else {
+                    winner = results[0];
+                }
+                
+                return winner
+
+                
+            }
+            function oneGame(choice) {
+                let computerChoice = computerPlay();
+                let result = playRound(choice, computerChoice);
+                return result;
+            }
+        </script>
+    </head>
+
+    <body>
+        <!-- There shall be input for the players choice. Upon entering something, Enter is hit. Then the value is tested for relevance. Then the output of the game is put in some output display window (perhaps just rasing window.alert)-->
+        <h1>
+            Play some Rock-Paper-Scissors!
+        </h1>
+        <input type="text" id="player_input" title="Type either Rock or Paper or Scissors">
+        <output id="round_output"> 
+
+        </output>
+
+    <!-- Later on the page can be extended into a Django app. The idea is to have this game as the main thing, while there also can be a leaderboard. Djanog is supposed then to handle saving the data for various players. Maybe we can then pitch some statistiscs -->
+    </body>
+</html>
