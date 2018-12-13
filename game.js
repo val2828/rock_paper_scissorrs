@@ -1,4 +1,10 @@
+
+
+var userChoice = document.getElementById("player_input").nodeValue
+document.getElementById("button_GO").onclick = oneGame()
+
 var variants = ["Rock", "Paper", "Scissors"];
+           
             function computerPlay() {
                 let choice = Math.floor(Math.random()*variants.length);
                 
@@ -31,7 +37,21 @@ var variants = ["Rock", "Paper", "Scissors"];
                 
             }
             function oneGame(choice) {
-                let computerChoice = computerPlay();
-                let result = playRound(choice, computerChoice);
-                return result;
+                let i;
+                let result;
+                let suitableValue = false;
+                for (i = 0; i < variants.length; i++) {
+                    if (userChoice == variants[i]) {
+                        suitableValue = true;
+                    }
+                }
+                if (suitableValue) {
+                    let computerChoice = computerPlay();
+                    result = playRound(choice, computerChoice);
+                    
+                }
+                else {
+                    result = "Enter proper value, maggot!"
+                }
+                window.alert(result);
             }
